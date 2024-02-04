@@ -1,4 +1,4 @@
-public class Lab_04_Java_Variables {
+public class JavaVariables {
     public static void main(String[] args)
     {
         int intOperandA = 7;
