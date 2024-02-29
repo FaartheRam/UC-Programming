@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class RockPaperScissors {
-
+//need comments
     public static String fullChoice(String choice) {
         if (choice.equalsIgnoreCase("R")) {
             return "Rock";
