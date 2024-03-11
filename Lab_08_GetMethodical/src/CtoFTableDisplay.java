@@ -17,7 +17,7 @@ public class CtoFTableDisplay {
         System.out.println("|       Celsius        |      Fahrenheit      |"); // top of table
         System.out.println("|---------------------------------------------|");
         for (int celsius = -100; celsius < 101; celsius++) { // table is from -100 to 100 celcius
-            prettyNumberF = Math.round(CtoF(celsius) * 100.0)/100.0;
+            prettyNumberF = Math.round(CtoF(celsius) * 100.0)/100.0; // fahrenheit
             lengthOfNumC = String.valueOf(celsius).length();
             lengthOfNumF = String.valueOf(prettyNumberF).length();
             isEvenLengthC = (lengthOfNumC % 2 == 0); // aligning
