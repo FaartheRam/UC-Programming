@@ -21,7 +21,7 @@ public class ArrayStuff {
         //c
         for (int j = 0; j < dataPoints.length; j++) {
             if (j < dataPoints.length - 1) {
-                System.out.print(dataPoints[j] + " | ");
+                System.out.print(dataPoints[j] + " | "); // line between data points
             } else {
                 System.out.print(dataPoints[j]);
             }
