@@ -11,11 +11,11 @@ public class ArrayStuff {
         //Part 1: DataPoints Array
 
         //a
-        int[] dataPoints = new int[100];
+        int[] dataPoints = new int[100]; // set datapoints variable (100)
 
         //b
         for (int i = 0; i < dataPoints.length; i++) {
-            dataPoints[i] = rnd.nextInt(100) + 1;
+            dataPoints[i] = rnd.nextInt(100) + 1; // random number between 1 and 100
         }
 
         //c
@@ -38,25 +38,26 @@ public class ArrayStuff {
 
         //a
         int ans = SafeInput.getRangedInt(in, "Enter an integer value between 1 and 100", 1, 100);
-
+        // get integer 1-100, log as variable
         //b
         occurenceScan(dataPoints, ans);
-
+        // how many times user input occurs within array
         //c
         int val = SafeInput.getRangedInt(in, "Enter an integer value between 1 and 100", 1, 100);
         contains(dataPoints, val);
-
+        // second variable
         //d
         min(dataPoints);
         max(dataPoints);
-
+        // scan dataPoints for minimum and maximum values
         //e
         System.out.println("Average of dataPoints is: " + getAverage(dataPoints));
+        // display average of datapoints
     }
 
     public static double getAverage(int values[]) {
-        double sum = 0;
-        double average;
+        double sum = 0; // sum variable
+        double average; // average variable
         for (int i = 0; i < values.length; i++) {
             sum += values[i];
         }
@@ -107,11 +108,11 @@ public class ArrayStuff {
     }
 
     public static boolean contains(int values[], int target) {
-        int matches = -1;
+        int matches = -1; // set counter to -1
         for (int m = 0; m < values.length; m++) {
             if (target == values[m]) {
                 matches = m;
-                break;
+                break; // break the
             }
         }
         if (matches != -1) {
