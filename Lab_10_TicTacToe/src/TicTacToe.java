@@ -19,15 +19,7 @@ public class TicTacToe {
         String player2 = " O "; // set player 2 to O
         String currentPlayer = player1;
         String currentPlayerString;
-        int moves;
-
-        /* testing sandbox */
-//        clearBoard();
-//        board[0][0] = "   ";    board[0][1] = "   ";    board[0][2] = "   ";
-//        board[1][0] = "   ";    board[1][1] = "   ";    board[1][2] = "   ";
-//        board[2][0] = "   ";    board[2][1] = "   ";    board[2][2] = "   ";
-//        display();
-//        System.out.println(isWinPossibleRow(currentPlayer));
+        int moves; // variable for moves
 
         do {
             games++;
@@ -56,7 +48,7 @@ public class TicTacToe {
                         System.out.printf("%s wins!", currentPlayerString); // display win message with current winner
                         break; // break loop
                     } else if (moves >= 7) { // if greater than or equal to 7 moves
-                        if (isTie()) { // its a tie
+                        if (isTie()) { // it's a tie
                             System.out.println("TIE GAME!"); // output tie game message
                             break; // break loop
                         }
@@ -75,8 +67,8 @@ public class TicTacToe {
         System.out.printf("You played %d game(s).\n", games); // display amount of games played
     }
 
-    /* clears board */
-    private static void clearBoard() {
+
+    private static void clearBoard() { // clear board
         for (int i = 0; i < ROW; i++) {
             for (int j = 0; j < COL; j++) {
                 board[i][j] = "   "; // reset every slot
@@ -116,7 +108,7 @@ public class TicTacToe {
      * @return true column win condition
      */
     private static boolean isColWin(String player) { // check for column with for specified player
-        for (int col = 0; col < COL; col++) {
+        for (int col = 0; col < COL; col++) { // scan columns
             if (board[0][col].equals(player) && board[1][col].equals(player) && board[2][col].equals(player)) {
                 return true; // return true if specified player wins on column
             }
@@ -129,7 +121,7 @@ public class TicTacToe {
      * @return true row win condition
      */
     private static boolean isRowWin(String player) { // check for row win for specified player
-        for (int row = 0; row < ROW; row++) {
+        for (int row = 0; row < ROW; row++) { // scan rows
             if (board[row][0].equals(player) && board[row][1].equals(player) && board[row][2].equals(player)) {
                 return true; // return true if specified player wins on row
             }
@@ -189,56 +181,56 @@ public class TicTacToe {
     /**
      * @return true if there is at least an X and O in every row
      */
-    private static boolean isTieRows() {
-        int countX = 0;
-        int countO = 0;
-        int numDeadWinVectors = 0;
-        for (int i = 0; i < ROW; i++) {
+    private static boolean isTieRows() {  // boolean for tie on rows
+        int countX = 0; // set variable for X
+        int countO = 0; // set varialbe for O
+        int numDeadWinVectors = 0; // blocked win vectors
+        for (int i = 0; i < ROW; i++) { // i for row
             countX = 0;
             countO = 0;
-            for (int j = 0; j < COL; j++) {
-                if (board[i][j].equals(" X ")) {
-                    countX++;
-                } else if (board[i][j].equals(" O ")) {
-                    countO++;
+            for (int j = 0; j < COL; j++) { // j for column
+                if (board[i][j].equals(" X ")) { // if X is present
+                    countX++; // add to count X
+                } else if (board[i][j].equals(" O ")) { // if O is present
+                    countO++; // add to count O
                 }
                 if (countX >= 1 && countO >= 1) {
-                    numDeadWinVectors++;
+                    numDeadWinVectors++; // add to blocked win vectors
                 }
             }
         }
-        if (numDeadWinVectors >= 3) {
-            return true;
+        if (numDeadWinVectors >= 3) { // no win moves left
+            return true; // tie
         } else {
-            return false;
+            return false; // no tie
         }
     }
 
     /**
      * @return true if there is at least an X and O in every column
      */
-    private static boolean isTieCols() {
-        int countX = 0;
-        int countO = 0;
-        int numDeadWinVectors = 0;
-        for (int i = 0; i < ROW; i++) {
-            countX = 0;
-            countO = 0;
-            for (int j = 0; j < COL; j++) {
-                if (board[j][i].equals(" X ")) {
-                    countX++;
-                } else if (board[j][i].equals(" O ")) {
-                    countO++;
+    private static boolean isTieCols() { // boolean for tie on columns
+        int countX = 0; // variable for X
+        int countO = 0; // variable for O
+        int numDeadWinVectors = 0; // blocked win vectors
+        for (int i = 0; i < ROW; i++) { // i for rows
+            countX = 0; // set count
+            countO = 0; // set count
+            for (int j = 0; j < COL; j++) { // j for columns
+                if (board[j][i].equals(" X ")) { // check for X
+                    countX++; // add to X count
+                } else if (board[j][i].equals(" O ")) { // check for O
+                    countO++; // add to O count
                 }
-                if (countX >= 1 && countO >= 1) {
-                    numDeadWinVectors++;
+                if (countX >= 1 && countO >= 1) { // no win possible
+                    numDeadWinVectors++; // add to blocked win vectors
                 }
             }
         }
         if (numDeadWinVectors >= 3) {
-            return true;
+            return true; // tie
         } else {
-            return false;
+            return false; // no tie
         }
     }
 
@@ -246,47 +238,47 @@ public class TicTacToe {
      * @return true if there is an X and O in the diagonal down
      */
     private static boolean isTieDiagDown() {
-        int countX = 0;
-        int countO = 0;
-        for (int i = 0; i < ROW; i++) {
-            if (board[i][i].equals(" X ")) {
-                countX++;
-            } else if (board[i][i].equals(" O ")) {
-                countO++;
+        int countX = 0; // set variable X
+        int countO = 0; // set variable O
+        for (int i = 0; i < ROW; i++) { // i for Row
+            if (board[i][i].equals(" X ")) { // check for X
+                countX++; // add to count X
+            } else if (board[i][i].equals(" O ")) { // check for O
+                countO++; // add to count 0
             }
         }
-        if (countX >= 1 && countO >= 1) {
-            return true;
+        if (countX >= 1 && countO >= 1) { // no win move left
+            return true; // tie
         } else {
-            return false;
+            return false; // no tie
         }
     }
 
     /**
      * @return true if there is an X and O in the diagonal up
      */
-    private static boolean isTieDiagUp() {
-        int countX = 0;
-        int countO = 0;
-        if (board[0][2].equals(" X ")) {
-            countX++;
-        } else if (board[0][2].equals(" O ")) {
-            countO++;
+    private static boolean isTieDiagUp() { // diagonal up tie boolean
+        int countX = 0; // set variable X
+        int countO = 0; // set variable O
+        if (board[0][2].equals(" X ")) { // check for X
+            countX++; // add to count X
+        } else if (board[0][2].equals(" O ")) { // check for O
+            countO++; // add to count O
         }
-        if (board[1][1].equals(" X ")) {
-            countX++;
-        } else if (board[1][1].equals(" O ")) {
-            countO++;
+        if (board[1][1].equals(" X ")) { // check for X
+            countX++; // add to count X
+        } else if (board[1][1].equals(" O ")) { // check for O
+            countO++; // add to count O
         }
-        if (board[2][0].equals(" X ")) {
-            countX++;
-        } else if (board[2][0].equals(" O ")) {
-            countO++;
+        if (board[2][0].equals(" X ")) { // check for X
+            countX++; // add to count X
+        } else if (board[2][0].equals(" O ")) { // check for O
+            countO++; // add to count O
         }
-        if (countX >= 1 && countO >= 1) {
-            return true;
+        if (countX >= 1 && countO >= 1) { // no win moves left
+            return true; // tie
         } else {
-            return false;
+            return false; // no tie
         }
     }
 }
